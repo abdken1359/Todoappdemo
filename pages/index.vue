@@ -12,5 +12,14 @@
     </div>
 </template>
 <script setup lang="ts">
-
+useSeoMeta({
+    title:'TodoApp',
+    ogTitle:'TodoApp',
+    description:'A basic todo app made with Nuxt + Supabase',
+    ogDescription:'A basic todo app made with Nuxt + Supabase',
+    ogUrl:'https://todoappdemo-zeta.vercel.app/',
+    ogImage:'/logo.png',
+    ogType:'website',
+    ogSiteName:'TodoApp'
+})
 </script>

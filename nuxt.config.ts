@@ -14,7 +14,12 @@ export default defineNuxtConfig({
     head:{
       htmlAttrs:{
         lang:'en'
-      }
+      },
+      link:[
+        {
+          rel:'icon',href:'/logo.png',type:'image/png'
+        }
+      ]
     }
   },
   css:["~/assets/app.css"],
