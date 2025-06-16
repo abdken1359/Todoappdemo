@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core'
 
-const theme=useStorage('theme','dark')
+const theme=useStorage('theme','light')
 const applyTheme=(theme:string):void=>{
     document.documentElement.setAttribute('data-theme',theme)
 }

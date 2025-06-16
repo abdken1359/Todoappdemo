@@ -6,10 +6,12 @@
                 <span>TAD</span>
             </NuxtLink>
         </div>
-        <div class="ml-auto simple-flex">
+        <div class="ml-auto simple-flex gap-2">
+             <SmallComponentsUserMenu v-if="user"/>
             <clientOnly>
             <SmallComponentsThemeSwitcher/>
             </clientOnly>
+           
             <NuxtLink href="https://github.com/abdken1359/Todoappdemo" target="_blank">
                 <button class="btn btn-ghost text-2xl" aria-label="See project on github">
                     <Icon name="hugeicons:github-01"/>
@@ -22,5 +24,5 @@
 </template>
 <script setup lang="ts">
 import { SmallComponentsThemeSwitcher } from '#components';
-
+const user = useSupabaseUser()
 </script>
