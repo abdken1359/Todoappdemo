@@ -1,9 +1,11 @@
 <template>
     <div>
-       <ContentHero class="h-[70vh]"/>
+        <ContentTaskManager v-if="user" class="min-h-[80vh]"/>
+       <ContentHero class="h-[70vh]" v-else/>
     </div>
 </template>
 <script setup lang="ts">
+
 useSeoMeta({
     title:'TodoApp',
     ogTitle:'TodoApp',
@@ -14,4 +16,6 @@ useSeoMeta({
     ogType:'website',
     ogSiteName:'TodoApp'
 })
+const user=useSupabaseUser()
+const client=useSupabaseClient()
 </script>
