@@ -8,9 +8,9 @@
                </label>
             </div>
             <div class="flex-none flex gap-2">
-                <button class="btn btn-success" @click="openModal()">
+                <button class="btn btn-primary" @click="openModal()">
                     <Icon name="hugeicons:add-01" class="text-lg"/>
-                     Add Todo
+                     Add Task
                 </button>
                 <button class="btn btn-error" :disabled="noTodos">
                     Delete All Items 
@@ -27,8 +27,8 @@
       <Icon name="hugeicons:cancel-01" class="text-lg"/>
       </button>
     </form>
-                <h3 class="mb-4">Add Todo</h3>
-                <form @submit.prevent>
+                <h3 class="mb-4">Add Task</h3>
+                <form @submit.prevent="addTodo()">
                     <label class=" input w-full">
                         <Icon name="hugeicons:license" class="text-lg"/>
                         <input type="text" placeholder="Enter Task name" v-model="todo">
@@ -64,4 +64,9 @@ const todo=ref('')
 const disabled=computed(()=>{
     return todo.value.length>0?false:true
 })
+const addTodo=async ()=>{
+    await useAddTodo(todo.value)
+    todo.value=''
+    addItemModal.value?.close()
+}
 </script>

@@ -57,7 +57,7 @@ const loginWithGoogle=async ():Promise<void>=>{
     const {error}=await supabase.auth.signInWithOAuth({
         provider:'google',
         options:{
-            redirectTo:'http://localhost:3000/confirm'
+            redirectTo:'https://todoappdemo-zeta.vercel.app/confirm'
         }
     })
     if(error){
@@ -74,7 +74,7 @@ const loginWithGithub=async ():Promise<void>=>{
     const {error}=await supabase.auth.signInWithOAuth({
         provider:'github',
         options:{
-            redirectTo:'http://localhost:3000/confirm'
+            redirectTo:'https://todoappdemo-zeta.vercel.app/confirm'
         }
     })
     if(error){
