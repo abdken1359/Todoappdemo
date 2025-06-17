@@ -13,7 +13,7 @@
   const todos: Todo[] = data ?? []
 
   const newTodo: Todo = {
-    name,
+    name:name,
     completed: false
   }
 
