@@ -1,7 +1,7 @@
 <template>
     <div>
 <div class="dropdown dropdown-center">
-  <div tabindex="0" role="button" class="btn text-2xl btn-ghost">
+  <div tabindex="0" role="button" class="btn text-2xl btn-ghost" aria-label="User menu">
     <Icon name="hugeicons:user-circle-02" />
   </div>
   <div tabindex="0" class="dropdown-content z-[1]  p-4 bg-base-100 shadow-lg w-[300px] max-w-[400px] rounded-box">

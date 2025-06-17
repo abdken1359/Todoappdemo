@@ -1,8 +1,10 @@
 <template>
     <div>
         <label class=" simple-flex gap-2 text-lg cursor-pointer">
-            <Icon name="hugeicons:sun-03"/>
-        <input type="checkbox" value="dark" @change="toggleTheme()" :checked="theme === 'dark'"  class="toggle theme-controller" />
+            <Icon name="hugeicons:sun-03" aria-label="Sun Icon"/>
+        <input type="checkbox" value="dark"
+        aria-label="Switch theme"
+        @change="toggleTheme()" :checked="theme === 'dark'"  class="toggle theme-controller" />
         <Icon name="hugeicons:moon-02"/>
         </label>
 
