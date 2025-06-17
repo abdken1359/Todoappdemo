@@ -1,75 +1,13 @@
-# Nuxt Minimal Starter
+# TAD (v1.0)
+## About
+TAD (Todo App Demo) is a simple full stack task manager web app made with [Nuxt 3](https://nuxt.com/), [Supabase](https://supabase.com/), and [Daisy UI](https://daisyui.com/). This project aims to showcase my fullstack web development skills. This project is open source, but you should modify it first before deploying it, so as to not deploy an exact copy of this project, without my consent. 
+## Nuxt Modules Used
+[Nuxt Modules](https://nuxt.com/modules) supercharges your Nuxt projects to make your DX even more blissful. The following modules have being used extensively in this project:
+- Nuxt Image 
+- Nuxt Icon
+- Nuxt Fonts
+- Supabase
+- Vueuse
+- Pinia
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+ *Althouht Reka UI module is present in nuxt.config.ts, I didn't use it, in favor of Daisy UI.*

@@ -21,9 +21,9 @@
     <section class="text-center a-container mt-16">
         <h1 class="lg:w-3/4 mx-auto  heading-entrance">
             Simple Todo App Made With 
-            <i class="text-green-500">Nuxt 3</i> + 
+            <i class="text-green-600">Nuxt 3</i> + 
             <i class="text-violet-600">Supabase</i> + 
-            <i class="text-amber-500">Daisy Ui</i>
+            <i class="text-amber-600">Daisy Ui</i>
         </h1>
         <NuxtLink to="/login" class="btn btn-primary btn-lg other-entrance">Login</NuxtLink>
     </section>
