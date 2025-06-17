@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="simple-flex flex-col md:flex-row">
+        <section class="simple-flex flex-row">
             <div class=" flex-1">
                <label class="input  w-full">
                 <Icon name="hugeicons:search-02" class="text-lg"/>
@@ -8,15 +8,30 @@
                 placeholder="Search Items" :disabled="noTodos" v-model="utils.searchModel">
                </label>
             </div>
-            <div class="flex-none flex gap-2">
+            <div class="flex-none hidden lg:flex gap-2">
                 <button class="btn btn-primary" @click="openModal()">
                     <Icon name="hugeicons:add-01" class="text-lg"/>
                      Add Task
                 </button>
                 <button class="btn btn-error" :disabled="noTodos" @click="openDeleteAllTasksModal()">
-                    Delete All Items 
+                    Delete All Task 
                     <Icon name="hugeicons:delete-02" class="text-lg"/>
                 </button>
+            </div>
+
+            <div class="flex-none flex lg:hidden gap-2">
+                <div class=" tooltip tooltip-primary" data-tip="Add Task">
+                <button class="btn btn-primary" @click="openModal()" aria-label="Add Task">
+                    <Icon name="hugeicons:add-01" class="text-lg"/>
+                     
+                </button>
+                </div>
+                <div class=" tooltip tooltip-error" data-tip="Delete All Tasks">
+                <button class="btn btn-error" :disabled="noTodos" @click="openDeleteAllTasksModal()" aria-label="Delete all tasks">
+                    
+                    <Icon name="hugeicons:delete-02" class="text-lg"/>
+                </button>
+                </div>
             </div>
 
         </section>
@@ -35,8 +50,12 @@
                         <input type="text" placeholder="Enter Task name" v-model="todo">
                         
                     </label>
-                    <button type="submit" class="btn mt-4 btn-block btn-primary" :disabled="disabled">
-                        <Icon name="hugeicons:add-01" class="text-lg"/><span>Add</span>
+                    <button type="submit" class="btn mt-4 btn-block btn-primary" 
+                    :disabled="disabled || loading">
+                        <Icon name="hugeicons:add-01" class="text-lg" v-show="!loading"/><span
+                        v-show="!loading"
+                        >Add</span>
+                        <span class=" loading loading-spinner" v-show="loading"></span>
                     </button>
                 </form>
                
@@ -69,8 +88,13 @@
 const todos=ref<any>(null)
 const error=ref<string|null>(null)
 const utils=useUtilitiesStore()
+const loading=ref(false)
 const noTodos=computed(()=>{
-    return todos.value?false:true
+    if(todos.value===null || todos.value.length<1){
+        return true
+    }else{
+        return false
+    }
 })
 const addItemModal=ref<HTMLDialogElement|null>(null)
 const deleteAllTasksModal=ref<HTMLDialogElement|null>(null)
@@ -79,12 +103,27 @@ const openModal = () => {
 }
 const todo=ref('')
 const disabled=computed(()=>{
-    return todo.value.length>0?false:true
+    return todo.value.length>0 ?false:true
 })
+const fetchTodos=async ()=>{
+ const {data,error}=await useSelectTodos()
+
+if(error){
+    console.log(error)
+}
+todos.value=data
+
+}
 const addTodo=async ()=>{
-    await useAddTodo(todo.value)
+    loading.value=true
+    setTimeout(async ()=>{
+         await useAddTodo(todo.value)
     todo.value=''
     addItemModal.value?.close()
+      loading.value=false
+      utils.showToast('success','Task added successfully!')
+    },1500)
+   
 }
 const openDeleteAllTasksModal=():void=>{
     deleteAllTasksModal.value?.showModal()
@@ -93,18 +132,15 @@ const openDeleteAllTasksModal=():void=>{
 const deleteAllTodos=async():Promise<void>=>{
     await useDeleteAllTodos()
     deleteAllTasksModal.value?.close()
-}
-onMounted(async ()=>{
-setInterval(async ()=>{
-        
-const {data,error}=await useSelectTodos()
-
-if(error){
-    console.log(error)
-}
-todos.value=data
-
-    },500)
+    utils.showToast('success','All tasks have been deleted!')
     
+}
+
+onMounted(async ()=>{
+await fetchTodos()
+setInterval(async ()=>{
+    await fetchTodos()
+},1000)
+     
 })
 </script>
