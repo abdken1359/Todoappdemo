@@ -8,9 +8,10 @@
         </div>
         <div class="ml-auto simple-flex gap-2">
              <SmallComponentsUserMenu v-if="user"/>
-            <clientOnly>
+            <!--<clientOnly>
             <SmallComponentsThemeSwitcher/>
             </clientOnly>
+            -->
            
             <NuxtLink href="https://github.com/abdken1359/Todoappdemo" target="_blank">
                 <button class="btn btn-ghost text-2xl" aria-label="See project on github">
